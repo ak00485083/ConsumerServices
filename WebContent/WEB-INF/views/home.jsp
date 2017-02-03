@@ -8,7 +8,8 @@
 <title>AdminApp</title>
 </head>
 <body>
-
+<%@include file="header.jsp"%>
 <h3>welcome home!!!!</h3>
+<%@include file="footer.jsp"%>
 </body>
 </html>
