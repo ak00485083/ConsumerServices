@@ -7,8 +7,8 @@
 div.footer{
 background-color: aqua;
 color: blue;
-margin: 5px 0 5px 0;
-padding: 5px;
+ height: 80px;
+ bottom: 0;
 border-style:ridge;
 border-color: black; 
 }

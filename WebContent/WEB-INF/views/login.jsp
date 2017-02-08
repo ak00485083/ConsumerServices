@@ -24,7 +24,7 @@ div.clear{
 <%@include file="header.jsp"%>
 <form action="login" method="post" >
 <div class="outer">
-<div class="login">
+<div class="login" >
 <label>UserName</label>
 <input type="text" id="username" name="username"><br>
 <label>Password</label>

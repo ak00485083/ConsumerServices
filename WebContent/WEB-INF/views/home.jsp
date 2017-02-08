@@ -4,34 +4,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="bootstrap/javascript/angular.js"></script>
-<script src="bootstrap/javascript/angular-route.js"></script>
 <style type="text/css">
 div.side_menu{
+background-color: powderblue;
+float:left;
+top: 90px;
+ bottom: 80px;
 }
 table.side_menu_table{
 
 }
+div.clear{
+ clear:both;
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AdminApp</title>
-</head>
-<body>
-<%@include file="header.jsp"%>
 
-<div ng-app="consumerApp" ng-controller="ConsumerAppController">
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+ <script type="text/javascript" src="js/centralRouting.js"></script>
+<!-- <link rel="js" type="text/javascript" href="js/centralRouting.js"/> -->
+</head>
+<body ng-app='consumerApp' >
+<%@include file="header.jsp"%>
+<div ng-controller="consumerAppController">
 <div class=side_menu>
-<table class=side_menu_table>
-<tr><a href="/home">Home</tr>
-<tr><a href="/consumers">Consumers</tr>
-<tr><a href="/administrators">Administrators</tr>
-<tr><a href="/transactions">Transactions</tr>
-<tr><a href="/sendNotifications">Send Notifications</tr>
-</table>
+
+ <table class=side_menu_table>
+				<tr>
+					<td><a href="/CustomerServices/home">Home </td>
+				</tr>
+				<tr>
+					<td><a href="/CustomerServices/consumers">Consumers</td>
+				</tr>
+				<tr>
+					<td><a href="/CustomerServices/admin/update/">Administrators</td>
+				</tr>
+				<tr>
+					<td><a href="/CustomerServices/transactions">Transactions</td>
+				</tr>
+				<tr>
+					<td><a href="/sendNotifications">Send Notifications</td>
+				</tr>
+			</table> 
 </div>
 <div ng-view></div>
 </div>
-<h3>welcome home!!!!</h3>
+<div class="clear"></div>
 <%@include file="footer.jsp"%>
 </body>
 </html>

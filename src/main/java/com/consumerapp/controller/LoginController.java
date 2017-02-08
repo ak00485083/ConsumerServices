@@ -27,6 +27,7 @@ public class LoginController {
 		logger.info("login page");
 		return "login";
 	}
+	
 
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String verifyLogin(@RequestParam(value="username",required=false) String userName,@RequestParam(value="password",required=false) String password){
