@@ -24,7 +24,8 @@ public class ConsumerAppConfiguration extends WebMvcConfigurerAdapter {
 	    }
 	  
 	  public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		    registry.addResourceHandler("/js/**")
-		            .addResourceLocations("/WEB-INF/js/");
+		    registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");
+		    registry.addResourceHandler("/views/**").addResourceLocations("/WEB-INF/views/");
+		   
 		}
 }

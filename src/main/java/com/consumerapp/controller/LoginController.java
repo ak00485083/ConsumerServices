@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,10 +41,21 @@ public class LoginController {
 	}
 		
 	if(admin!=null)
-		return "home";
+//		return "home";
+		return "redirect:home";
 	else
 		return "login";
 	}
 	
+	@RequestMapping(value="/home",method=RequestMethod.GET)
+	public String goHome(){
+		
+		return "home";
+	}
+	@RequestMapping(value="/admin/update/",method=RequestMethod.GET)
+	public String getAdminInfo(){
+		
+		return "home";
+	}
 
 }

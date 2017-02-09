@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html  ng-app="consumerApp">
 <head>
 <style type="text/css">
 div.side_menu{
@@ -17,19 +17,21 @@ table.side_menu_table{
 div.clear{
  clear:both;
 }
+div.view{
+float:right
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AdminApp</title>
-
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
- <script type="text/javascript" src="js/centralRouting.js"></script>
-<!-- <link rel="js" type="text/javascript" href="js/centralRouting.js"/> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script> -->
+<script type="text/javascript" src="/CustomerServices/js/angular.js"></script>
+<script type="text/javascript" src="/CustomerServices/js/angular-route.js"></script>
+<script type="text/javascript" src="/CustomerServices/js/centralRouting.js"></script>
 </head>
-<body ng-app='consumerApp' >
+<body  >
 <%@include file="header.jsp"%>
-<div ng-controller="consumerAppController">
+<div>
 <div class=side_menu>
 
  <table class=side_menu_table>
@@ -40,7 +42,7 @@ div.clear{
 					<td><a href="/CustomerServices/consumers">Consumers</td>
 				</tr>
 				<tr>
-					<td><a href="/CustomerServices/admin/update/">Administrators</td>
+					<td><a href="#/page2">Administrators</td>
 				</tr>
 				<tr>
 					<td><a href="/CustomerServices/transactions">Transactions</td>
@@ -50,7 +52,9 @@ div.clear{
 				</tr>
 			</table> 
 </div>
-<div ng-view></div>
+
+<div class="ng-view">HII</div>
+
 </div>
 <div class="clear"></div>
 <%@include file="footer.jsp"%>

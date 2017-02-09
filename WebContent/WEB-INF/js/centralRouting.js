@@ -1,33 +1,25 @@
+var consumerApp=angular.module("consumerApp",['ngRoute']);
 
-alert("hi there,in javascript");
-var consumerApp=angular.module("consumerApp",['ngRoute'])
-conumerApp.config(function ($routeProvider){
-	$RouteProvider.when("/home",{
-		templateUrl: "/views/home.jsp",
-		controller: "consumerAppController"
-	}).when("/admin/update",{
-		templateUrl: "/views/adminUpdate.jsp",
+consumerApp.config(function ($routeProvider){
+//	 $locationProvider.html5Mode(true);
+	
+	$routeProvider.when("/page2",{
+		templateUrl: "views/adminUpdate2.html",
 		controller: "adminUpdateCtrl"
-	}).when("/admin",{
-		templateUrl: "/views/myInfo.jsp",
-		controller: "myInfoCtrl"
-	}).when("/consumers",{
-		templateUrl: "/views/consumers.jsp",
-		controller: "consumerCtrl"
-	})
+	});
 });
 
-
-consumerApp.controller('consumerAppController', function($scope){
-	alert("hi there,in javascript");
+consumerApp.controller('mainController', function($scope){
 	$scope.message = 'Look! I am an about page.';
 });
 consumerApp.controller('adminUpdateCtrl', function($scope){
-	$scope.message = 'Look! I am an about page.';
+	$scope.message = 'Look! I am an admin page.';
 });
 consumerApp.controller('myInfoCtrl', function($scope){
+	alert("hi there,in admin infor");
 	$scope.message = 'Look! I am an about page.';
 });
 consumerApp.controller('consumerCtrl', function($scope){
+	alert("hi there,in consumer update");
 	$scope.message = 'Look! I am an about page.';
 });

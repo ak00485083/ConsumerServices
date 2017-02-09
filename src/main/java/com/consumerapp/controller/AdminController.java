@@ -36,6 +36,5 @@ public class AdminController {
 		return adminService.updateAdminDetails(admin);
 	}
 	
-	
 
 }
