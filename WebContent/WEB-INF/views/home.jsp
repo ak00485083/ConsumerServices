@@ -36,24 +36,24 @@ float:right
 
  <table class=side_menu_table>
 				<tr>
-					<td><a href="/CustomerServices/home">Home </td>
+					<td><a href="#/home">Home </td>
 				</tr>
 				<tr>
-					<td><a href="/CustomerServices/consumers">Consumers</td>
+					<td><a href="#/conusmers">Consumers</td>
 				</tr>
 				<tr>
-					<td><a href="#/page2">Administrators</td>
+					<td><a href="#/admin">Administrators</td>
 				</tr>
 				<tr>
-					<td><a href="/CustomerServices/transactions">Transactions</td>
+					<td><a href="#/transactions">Transactions</td>
 				</tr>
 				<tr>
-					<td><a href="/sendNotifications">Send Notifications</td>
+					<td><a href="#/sendNotifications">Send Notifications</td>
 				</tr>
 			</table> 
 </div>
 
-<div class="ng-view">HII</div>
+<div class="ng-view"></div>
 
 </div>
 <div class="clear"></div>

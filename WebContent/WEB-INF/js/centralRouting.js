@@ -3,23 +3,46 @@ var consumerApp=angular.module("consumerApp",['ngRoute']);
 consumerApp.config(function ($routeProvider){
 //	 $locationProvider.html5Mode(true);
 	
-	$routeProvider.when("/page2",{
-		templateUrl: "views/adminUpdate2.html",
+//	$routeProvider.when("/page2",{
+//		templateUrl: "views/adminUpdate2.html",
+//		controller: "adminUpdateCtrl"
+//	});
+	
+	$routeProvider.when("/home",{
+		templateUrl: "html/adminDetails.html",
+		controller: "mainController"
+	}).when("/admin",{
+		templateUrl: "html/adminUpdate.html",
 		controller: "adminUpdateCtrl"
-	});
+	}).when("/consumers",{
+		templateUrl: "html/consumers.html",
+		controller: "consumerCtrl"
+	}).when("/transactions",{
+		templateUrl: "html/transactions.html",
+		controller: "transactionsCtrl"
+	})
 });
 
-consumerApp.controller('mainController', function($scope){
-	$scope.message = 'Look! I am an about page.';
+consumerApp.controller('mainController', function($scope,$http){
+	$scope.message = 'Look! I am on admin details page.';
+	$http({
+		method:'GET',
+		url:'admin/'+ $scope.form.id,
+	}).then(function successCalback(response){
+		$scope.admin=response.data.admin;
+	},function errorCallback(response){
+		console.log(response.statusText);
+	});
+	
+	
+	
 });
 consumerApp.controller('adminUpdateCtrl', function($scope){
-	$scope.message = 'Look! I am an admin page.';
+	$scope.message = 'Look! I am an admin update page.';
 });
-consumerApp.controller('myInfoCtrl', function($scope){
-	alert("hi there,in admin infor");
-	$scope.message = 'Look! I am an about page.';
+consumerApp.controller('transactionsCtrl', function($scope){
+	$scope.message = 'Look! I am an admin info page.';
 });
 consumerApp.controller('consumerCtrl', function($scope){
-	alert("hi there,in consumer update");
-	$scope.message = 'Look! I am an about page.';
+	$scope.message = 'Look! I am consumer page.';
 });

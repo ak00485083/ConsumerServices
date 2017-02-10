@@ -52,10 +52,5 @@ public class LoginController {
 		
 		return "home";
 	}
-	@RequestMapping(value="/admin/update/",method=RequestMethod.GET)
-	public String getAdminInfo(){
-		
-		return "home";
-	}
 
 }
