@@ -22,7 +22,7 @@ div.clear{
 </head>
 <body>
 <%@include file="header.jsp"%>
-<form action="login" method="post" >
+<form action="home" method="post" >
 <div class="outer">
 <div class="login" >
 <label>UserName</label>

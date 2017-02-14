@@ -25,14 +25,15 @@ consumerApp.config(function ($routeProvider){
 
 consumerApp.controller('mainController', function($scope,$http){
 	$scope.message = 'Look! I am on admin details page.';
-	$http({
-		method:'GET',
-		url:'admin/'+ $scope.form.id,
-	}).then(function successCalback(response){
-		$scope.admin=response.data.admin;
-	},function errorCallback(response){
-		console.log(response.statusText);
-	});
+	
+//	$http({
+//		method:'GET',
+//		url:'admin/'+ $scope.form.id,
+//	}).then(function successCalback(response){
+//		$scope.admin=response.data.admin;
+//	},function errorCallback(response){
+//		console.log(response.statusText);
+//	});
 	
 	
 	

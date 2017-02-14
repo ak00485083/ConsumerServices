@@ -10,6 +10,7 @@ background-color: powderblue;
 float:left;
 top: 90px;
  bottom: 80px;
+ height: 400px;
 }
 table.side_menu_table{
 
@@ -28,12 +29,15 @@ float:right
 <script type="text/javascript" src="/CustomerServices/js/angular.js"></script>
 <script type="text/javascript" src="/CustomerServices/js/angular-route.js"></script>
 <script type="text/javascript" src="/CustomerServices/js/centralRouting.js"></script>
+<script type="text/javascript">
+
+var adminDetails = ${admin};
+</script>
 </head>
 <body  >
 <%@include file="header.jsp"%>
 <div>
 <div class=side_menu>
-
  <table class=side_menu_table>
 				<tr>
 					<td><a href="#/home">Home </td>
@@ -53,7 +57,11 @@ float:right
 			</table> 
 </div>
 
-<div class="ng-view"></div>
+<div >
+<%-- <p>hi ${admin.username}</p> --%>
+</div>
+
+<div class="ng-view" ng-init=" myval= '${adminDetails}'"></div>
 
 </div>
 <div class="clear"></div>
