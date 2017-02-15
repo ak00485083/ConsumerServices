@@ -16,21 +16,28 @@ public class Admin implements Serializable{
 	private String lastName;
 	private String location;
 	private Date joiningDate;
+	private String contact;
 	private Address address;
 	
 	public Admin() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Admin(String role, String username, String password, String location, Date joiningDate, Address address) {
+	
+	public Admin(String role, String username, String password, String firstName, String lastName, String location,
+			Date joiningDate, String contact, Address address) {
 		super();
 		this.role = role;
 		this.username = username;
 		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.location = location;
 		this.joiningDate = joiningDate;
+		this.contact = contact;
 		this.address = address;
 	}
+
 	public String getRole() {
 		return role;
 	}
@@ -137,6 +144,14 @@ public class Admin implements Serializable{
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 	
 	

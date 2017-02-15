@@ -14,13 +14,13 @@ public class AdminDao {
 	 static ArrayList<Admin> adminCollection=new ArrayList<>();
 	static{
 
-		adminCollection.add(new Admin("manager", "rm0012897", "anything", "pimple gurav",new Date(),
+		adminCollection.add(new Admin("manager", "rm0012897", "anything","roshan","mankar", "pimple gurav",new Date(),"9874563215",
 				new Address("dange chowk","A 303","opp macdonalds", "pune", "maharashtra", "411033")));
-		adminCollection.add(new Admin("junior manager", "ps0012677", "anything", "pimple gurav",new Date(),
+		adminCollection.add(new Admin("junior manager", "ps0012677", "anything","raj","abhishek", "pimple gurav",new Date(),"5236478915",
 				new Address("dange chowk","A 303","opp macdonalds", "pune", "maharashtra", "411033")));
-		adminCollection.add(new Admin("manager", "np0012397", "anything", "pimple gurav",new Date(),
+		adminCollection.add(new Admin("manager", "np0012397", "anything","kumar","abhishek", "pimple gurav",new Date(),"6547893215",
 				new Address("dange chowk","A 303","opp macdonalds", "pune", "maharashtra", "411033")));
-		adminCollection.add(new Admin("junior manager", "sd0098897", "anything", "pimple gurav",new Date(),
+		adminCollection.add(new Admin("junior manager", "sd0098897", "anything","nirmal","baba", "pimple gurav",new Date(),"74568931452",
 				new Address("dange chowk","A 303","opp macdonalds", "pune", "maharashtra", "411033")));
 	}
 

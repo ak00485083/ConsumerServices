@@ -9,7 +9,7 @@ consumerApp.config(function ($routeProvider){
 //	});
 	
 	$routeProvider.when("/home",{
-		templateUrl: "html/adminDetails.html",
+		templateUrl: "html/adminNavigator.html",
 		controller: "mainController"
 	}).when("/admin",{
 		templateUrl: "html/adminUpdate.html",
@@ -25,6 +25,13 @@ consumerApp.config(function ($routeProvider){
 
 consumerApp.controller('mainController', function($scope,$http){
 	$scope.message = 'Look! I am on admin details page.';
+	 $scope.count = 0;
+	$scope.saveAdminDetails=function(){
+		$scope.count++;
+	};
+	$scope.cancel=function(){
+		$scope.count++;
+	};
 	
 //	$http({
 //		method:'GET',

@@ -1,10 +1,14 @@
 package com.consumerapp.controller;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,27 +34,48 @@ public class LoginController {
 	}
 	
 
-	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public String verifyLogin(@RequestParam(value="username",required=false) String userName,@RequestParam(value="password",required=false) String password){
-		
-	logger.info("verify login");
-	if(userName==null || password==null){
-		return "login";
-	}else{
-		admin = adminDao.findAdmin(userName, password);
-	}
-		
-	if(admin!=null)
-//		return "home";
-		return "redirect:home";
-	else
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String redirectLogin(ModelMap model) {
+		logger.info("login page");
 		return "login";
 	}
 	
-	@RequestMapping(value="/home",method=RequestMethod.GET)
-	public String goHome(){
+	
+	public Admin verifyLogin(String userName,String password){
 		
-		return "home";
+	logger.info("verify login");
+	if(userName==null || password==null){
+		return null;
+	}else{
+		return adminDao.findAdmin(userName, password);
+	}
+	}
+	
+	
+	@RequestMapping(value="/home",method=RequestMethod.POST)
+	public String goHome(@RequestParam(value="username",required=false) String userName, @RequestParam(value="password",required=false) String password, ModelMap model){
+		admin=verifyLogin(userName,password);
+		ObjectMapper mapper = new ObjectMapper();
+		String adminJsonFormat = null;
+		try {
+			adminJsonFormat=mapper.writeValueAsString(admin);
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(admin!=null){
+			model.addAttribute("admin",adminJsonFormat);
+			model.addAttribute("greeting", "hello there");
+			return "home";
+		}
+		else
+			return "redirect:login";
+		}
 	}
 
-}

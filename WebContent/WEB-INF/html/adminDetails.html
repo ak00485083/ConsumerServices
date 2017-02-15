@@ -3,19 +3,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin DetailsPage</title>
+
 </head>
 <body>
+
 <div class="jumbotron text-center">
-        <h1>Admin Detail Page new one </h1>
+        <h1>Admin Detail Page </h1>
 
         <p>{{message}}</p>
         <label>Hi </label>
-         <label>{{loggedInUser}}</label><br>
+         <label>{{loggedInUser.username}}</label><br>
         <label>Location :</label>
          <label>{{loggedInUser.location}} </label><br>
         <label>Joining Date :</label>
-         <label>{{loggedInUser.joiningDate}} </label>
-        
+         <label>{{loggedInUser.joiningDate}} </label><br>
     </div>
 </body>
 </html>
