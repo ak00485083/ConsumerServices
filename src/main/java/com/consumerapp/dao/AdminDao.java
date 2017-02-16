@@ -1,8 +1,12 @@
 package com.consumerapp.dao;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Component;
 
 import com.consumerapp.model.Address;
@@ -37,9 +41,11 @@ public class AdminDao {
 
 	
 	
-	public String createAdmin(Admin admin){
+	public String createAdmin(Admin admin) throws JsonGenerationException, JsonMappingException, IOException{
+		ObjectMapper mapper = new ObjectMapper();
 		adminCollection.add(admin);
-		return "password";
+		String password="password";
+		return mapper.writeValueAsString(password);
 	}
 	
 	public Admin updateAdmin(Admin admin){

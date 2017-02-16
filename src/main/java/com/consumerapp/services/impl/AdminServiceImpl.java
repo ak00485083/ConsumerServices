@@ -1,5 +1,10 @@
 package com.consumerapp.services.impl;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -23,8 +28,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Admin updateAdminDetails(Admin admin) {
-		// TODO Auto-generated method stub
-		return null;
+		return adminDao.updateAdmin(admin);
 	}
 
 	@Override
@@ -37,6 +41,20 @@ public class AdminServiceImpl implements AdminService {
 	public void sendGeneralNotification() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String deleteAdminDetails(String identifier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Admin> findAdmin(String identifier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String createAdmin(Admin admin) throws JsonGenerationException, JsonMappingException, IOException {
+		return adminDao.createAdmin(admin);
 	}
 
 }

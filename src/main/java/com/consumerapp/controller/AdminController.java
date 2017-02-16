@@ -1,5 +1,10 @@
 package com.consumerapp.controller;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,23 +23,61 @@ public class AdminController {
 	@Autowired
 	AdminServiceImpl adminService;
 	
-//	@RequestMapping(value="/admin/detail/{identifier}",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-//	public Admin getAdminDetails(@PathVariable("identifier")int identifier){
-//		
-//		Admin adminDetails = adminService.getAdminDetails(String.valueOf(identifier));
-//		return adminDetails;
-//	}
+
 	
-	@RequestMapping(value="/admin/update/{identifier}",method=RequestMethod.PUT)
+	/**
+	 * update admin informations
+	 * @param admin
+	 * @return
+	 */
+	@RequestMapping(value="/admins/{identifier}",method=RequestMethod.PUT , produces=MediaType.APPLICATION_JSON_VALUE)
 	public Admin updateAdminInfo(@RequestBody Admin admin){
 		
 		return adminService.updateAdminDetails(admin);
 	}
 	
-	@RequestMapping(value="/admin/update/{identifier}",method=RequestMethod.POST)
-	public Admin createAdmin( @RequestBody Admin admin){
+	/**
+	 * create new admin
+	 * @param admin
+	 * @return
+	 * @throws IOException 
+	 * @throws JsonMappingException 
+	 * @throws JsonGenerationException 
+	 */
+	@RequestMapping(value="/admins/",method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	public String createAdmin( @RequestBody Admin admin) throws JsonGenerationException, JsonMappingException, IOException{
+		
+		return adminService.createAdmin(admin);
+	}
+	
+	
+	@RequestMapping(value="/admins/",method=RequestMethod.GET)
+	public Admin getAdmins( @RequestBody Admin admin){
 		
 		return adminService.updateAdminDetails(admin);
+	}
+	
+	
+	/**
+	 * deletes an admin
+	 * @param identifier
+	 * @return
+	 */
+	@RequestMapping(value="/admins/{identifier}",method=RequestMethod.DELETE)
+	public String deleteAdmin( @PathVariable("identifier") String identifier){
+		
+		return adminService.deleteAdminDetails(identifier);
+	}
+	
+	/**
+	 * search an admin
+	 * @param identifier
+	 * @return
+	 */
+	@RequestMapping(value="/admins/{identifier}",method=RequestMethod.GET)
+	public List<Admin> findAdmin( @PathVariable("identifier") String identifier){
+		
+		return adminService.findAdmin(identifier);
 	}
 	
 

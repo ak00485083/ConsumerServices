@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Administrator</title>
+<style>
+p {
+	font-size: 22px;
+	font-weight: bold;
+	font-style: italic;
+	color: rgb(62, 62, 62);
+	margin: 18px;
+}
+
+ul {
+	float: left;
+	border-radius: 5px;
+	border: solid 1px rgb(198, 198, 198);
+	padding: 7px 11px;
+	background-color: rgb(248, 248, 248);
+}
+
+li {
+	float: left;
+	background-color: rgb(200, 200, 200);
+	padding: 5px 19px;
+	margin: 5px 2px 5px 0px;
+	color: black;
+	list-style: none;
+}
+
+li:hover, li:hover a {
+	background-color: rgb(6, 179, 6);
+	color: white;
+}
+
+li a {
+	text-decoration: none;
+	color: white;
+	font-size: 21px;
+	font-style: italic;
+	text-shadow: 1px 0px 3px rgb(157, 157, 157);
+}
+
+li:nth-child(1) {
+	border-radius: 4px 0px 0px 4px;
+	margin-left: 1px;
+}
+
+li:nth-child(3) {
+	border-radius: 0px 4px 4px 0px;
+}
+
+.active {
+	background-color: rgb(6, 179, 6);
+}
+</style>
+</head>
+<body>
+	<section>
+		<ul ng-init="tab = 1">
+			<li ng-class="{active:tab===1}"><a href ng-click="tab = 1">My
+					Info</a></li>
+			<li ng-class="{active:tab===2}"><a href ng-click="tab = 2">Update
+					Details</a></li>
+			<li ng-class="{active:tab===3}"><a href ng-click="tab = 3">Create
+					Admin</a></li>
+			<li ng-class="{active:tab===4}"><a href ng-click="tab = 4">Search</a>
+			</li>
+			<br>
+			<div ng-show="tab === 1">
+				<h1>Admin Detail Page</h1>
+
+				<p>{{message}}</p>
+				<label>Hi </label> <label>{{loggedInUser.username}}</label><br>
+				<label>Location :</label> <label>{{loggedInUser.location}} </label><br>
+				<label>Joining Date :</label> <label>{{loggedInUser.joiningDate}}
+				</label><br>
+			</div>
+			<div ng-show="tab === 2">
+				<form ng-submit="saveAdminDetails()" name="updateForm">
+					<h1>Admin Update Page</h1>
+					<p>{{ message }}</p>
+					<label>First Name: </label> <input type="text" name="firstName"
+						ng-model="admin.firstName"> <label>Last Name: </label> <input
+						type="text" ng-model="admin.lastName"><br> <label>Location:
+					</label> <input type="text" ng-model="admin.location"><br> <label>Contact:
+					</label> <input type="text" ng-model="admin.contact"><br> <label>House:
+					</label> <input type="text" ng-model="admin.address.house"><br>
+					<input type="submit" value="Save"> <input type="button"
+						value="Cancel" ng-click="cancelOperation()"> <input
+						type="button" value="Delete" ng-click="deleteAdmin()">
+				</form>
+			</div>
+			<div ng-show="tab === 3">
+				<div ng-show="create" >
+					<form ng-submit="createAdmin()" name="createForm">
+						<h1>Create Admin Page</h1>
+						<label>username: </label>
+						 <input type="text"ng-model="createForm.username"><br>
+							 <label>First Name: </label> 
+							 <input type="text" ng-model="createForm.firstName">
+							  <label>Last Name: </label> 
+							  <input type="text" ng-model="createForm.lastName"><br>
+							   <label>Location: </label> 
+							   <input type="text" ng-model="createForm.location"><br> 
+							   <label>Contact: </label>
+							    <input type="text" ng-model="createForm.contact"><br> 
+							    <label>House: </label> 
+							    <input type="text" ng-model="createForm.address.house"><br> 
+							    <input type="submit" value="CreateAdmin"> 
+							    <input type="button" value="Cancel" ng-click="cancelOperation()"> 
+							    <input type="button" value="Delete" ng-click="deleteAdmin()">
+					</form>
+					<div ng-show="success">
+						<h1>Admin Created Successfully!!!</h1>
+						<h1>Your Password is : {{password}}</h1>
+
+					</div>
+				</div>
+			</div>
+			<div ng-show="tab ===4">
+				<form ng-submit="search()" name="searchForm">
+					<h1>Admin Update Page</h1>
+					<p>{{ message }}</p>
+					<label>First Name: </label> <input type="text"
+						ng-model="searchForm.firstName"> <label>Last Name:
+					</label> <input type="text" ng-model="searchForm.lastName"><br>
+					<label>Location: </label> <input type="text"
+						ng-model="searchForm.location"><br> <label>Contact:
+					</label> <input type="text" ng-model="searchForm.contact"><br>
+					<label>House: </label> <input type="text"
+						ng-model="searchForm.address.house"><br> <input
+						type="submit" value="Find">
+				</form>
+			</div>
+		</ul>
+	</section>
+</body>
+</html>

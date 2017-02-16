@@ -29,10 +29,6 @@ float:right
 <script type="text/javascript" src="/CustomerServices/js/angular.js"></script>
 <script type="text/javascript" src="/CustomerServices/js/angular-route.js"></script>
 <script type="text/javascript" src="/CustomerServices/js/centralRouting.js"></script>
-<script type="text/javascript">
-
-var adminDetails = ${admin};
-</script>
 </head>
 <body  >
 <%@include file="header.jsp"%>
@@ -61,10 +57,18 @@ var adminDetails = ${admin};
 <%-- <p>hi ${admin.username}</p> --%>
 </div>
 
-<div class="ng-view" ng-init=" myval= '${adminDetails}'"></div>
+<div class="ng-view"  ng-controller="adminIntializerController"></div>
+
 
 </div>
 <div class="clear"></div>
 <%@include file="footer.jsp"%>
+
+<script type="text/javascript">
+consumerApp.controller('adminIntializerController',function($rootScope){
+	$rootScope.loggedInUser=${admin};
+});
+</script>
+
 </body>
 </html>

@@ -23,24 +23,68 @@ consumerApp.config(function ($routeProvider){
 	})
 });
 
-consumerApp.controller('mainController', function($scope,$http){
+consumerApp.controller('mainController', function($scope,$http,$rootScope){
+	$scope.admin=$rootScope.loggedInUser;
+	$scope.success=false;
+	$scope.create=true;
 	$scope.message = 'Look! I am on admin details page.';
-	 $scope.count = 0;
 	$scope.saveAdminDetails=function(){
-		$scope.count++;
+		$http({
+			method:'PUT',
+			url:'admins/'+ $scope.admin.username,
+			data : $scope.admin
+		}).then(function successCalback(response){
+			$scope.success=true;
+			$scope.create=false;
+			$scope.admin=response.data.admin;
+		},function errorCallback(response){
+			$scope.create=true;
+			console.log(response.statusText);
+		});
+		
 	};
-	$scope.cancel=function(){
-		$scope.count++;
+	$scope.createAdmin=function(){
+		$http({
+			method:'POST',
+			url:'admins/',
+			data : $scope.admin
+		}).then(function successCalback(response){
+			alert(response.data.password);
+			$scope.password=response.data.password;
+		},function errorCallback(response){
+			console.log(response.statusText);
+		});
+		
+	};
+	$scope.deleteAdmin=function(){
+		$http({
+			method:'DELETE',
+			url:'admins/'+ $scope.admin.username,
+			data : $scope.admin
+		}).then(function successCalback(response){
+			$scope.admin=response.data.admin;
+		},function errorCallback(response){
+			console.log(response.statusText);
+		});
+		
+	};
+	$scope.getAllAdmin=function(){
+		$http({
+			method:'GET',
+			url:'admins/',
+			data : $scope.admin
+		}).then(function successCalback(response){
+			$scope.admin=response.data.admin;
+		},function errorCallback(response){
+			console.log(response.statusText);
+		});
+		
 	};
 	
-//	$http({
-//		method:'GET',
-//		url:'admin/'+ $scope.form.id,
-//	}).then(function successCalback(response){
-//		$scope.admin=response.data.admin;
-//	},function errorCallback(response){
-//		console.log(response.statusText);
-//	});
+	$scope.cancelOperation=function(){
+	};
+	
+//	
 	
 	
 	

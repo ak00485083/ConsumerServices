@@ -16,6 +16,9 @@ public class Address implements Serializable{
 	private String state;
 	private String pincode;
 	
+	public Address() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Address(String street, String house, String landmark, String city, String state, String pincode) {
 		super();
