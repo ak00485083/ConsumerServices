@@ -17,5 +17,6 @@ public interface AdminService {
 	public String deleteAdminDetails(String identifier);
 	public List<Admin> findAdmin(String identifier);
 	public String createAdmin(Admin admin) throws JsonGenerationException, JsonMappingException, IOException;
+	public List<Admin> search(String identifier);
 	
 }

@@ -93,9 +93,9 @@ li:nth-child(3) {
 				</form>
 			</div>
 			<div ng-show="tab === 3">
-				<div ng-show="create" >
+				<div ng-hide="success" >
 					<form ng-submit="createAdmin()" name="createForm">
-						<h1>Create Admin Page</h1>
+						<h1>Create Admin Page new</h1>
 						<label>username: </label>
 						 <input type="text"ng-model="createForm.username"><br>
 							 <label>First Name: </label> 
@@ -112,17 +112,19 @@ li:nth-child(3) {
 							    <input type="button" value="Cancel" ng-click="cancelOperation()"> 
 							    <input type="button" value="Delete" ng-click="deleteAdmin()">
 					</form>
+				</div>
 					<div ng-show="success">
 						<h1>Admin Created Successfully!!!</h1>
 						<h1>Your Password is : {{password}}</h1>
 
 					</div>
-				</div>
 			</div>
 			<div ng-show="tab ===4">
+				<div>
 				<form ng-submit="search()" name="searchForm">
 					<h1>Admin Update Page</h1>
 					<p>{{ message }}</p>
+
 					<label>First Name: </label> <input type="text"
 						ng-model="searchForm.firstName"> <label>Last Name:
 					</label> <input type="text" ng-model="searchForm.lastName"><br>
@@ -133,6 +135,12 @@ li:nth-child(3) {
 						ng-model="searchForm.address.house"><br> <input
 						type="submit" value="Find">
 				</form>
+				</div>
+				<div ng-repeat="admin in adminList" ng-if="$index % 2 == 0"
+						class="row">
+						<div class="col-xs-6">First: {{results[$index].admin.firstName}}</div>
+						<br />
+					</div>
 			</div>
 		</ul>
 	</section>

@@ -57,4 +57,8 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.createAdmin(admin);
 	}
 
+	public List<Admin> search(String identifier) {
+		return adminDao.search(identifier);
+	}
+
 }

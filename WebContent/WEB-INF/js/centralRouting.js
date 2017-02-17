@@ -34,11 +34,8 @@ consumerApp.controller('mainController', function($scope,$http,$rootScope){
 			url:'admins/'+ $scope.admin.username,
 			data : $scope.admin
 		}).then(function successCalback(response){
-			$scope.success=true;
-			$scope.create=false;
-			$scope.admin=response.data.admin;
+			$scope.admin=response.data;
 		},function errorCallback(response){
-			$scope.create=true;
 			console.log(response.statusText);
 		});
 		
@@ -49,9 +46,11 @@ consumerApp.controller('mainController', function($scope,$http,$rootScope){
 			url:'admins/',
 			data : $scope.admin
 		}).then(function successCalback(response){
-			alert(response.data.password);
-			$scope.password=response.data.password;
+			$scope.success=true;
+			$scope.create=false;
+			$scope.password=response.data;
 		},function errorCallback(response){
+			$scope.create=true;
 			console.log(response.statusText);
 		});
 		
@@ -59,22 +58,22 @@ consumerApp.controller('mainController', function($scope,$http,$rootScope){
 	$scope.deleteAdmin=function(){
 		$http({
 			method:'DELETE',
-			url:'admins/'+ $scope.admin.username,
-			data : $scope.admin
+			url:'admins/',
+			data : $scope.admin.username
 		}).then(function successCalback(response){
-			$scope.admin=response.data.admin;
+			$scope.admin=response.data;
 		},function errorCallback(response){
 			console.log(response.statusText);
 		});
 		
 	};
-	$scope.getAllAdmin=function(){
+	$scope.search=function(){
 		$http({
 			method:'GET',
 			url:'admins/',
-			data : $scope.admin
+			data : $scope.searchForm
 		}).then(function successCalback(response){
-			$scope.admin=response.data.admin;
+			$scope.adminList=response.data;
 		},function errorCallback(response){
 			console.log(response.statusText);
 		});

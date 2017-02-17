@@ -3,6 +3,7 @@ package com.consumerapp.dao;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -53,6 +54,33 @@ public class AdminDao {
 		adminCollection.remove(findAdmin);
 		adminCollection.add(admin);
 		return admin;
+	}
+
+
+
+	public List<Admin> search(String identifier) {
+		List<Admin> adminSearchResult=new ArrayList<>();
+		if(identifier==null){
+			return adminCollection;
+		}else{
+			for (Admin admin : adminCollection) {
+				if(admin.getUsername().equals(identifier)){
+					adminSearchResult.add(admin);
+					
+				}else if(admin.getFirstName().equals(identifier)){
+					adminSearchResult.add(admin);
+					
+				}else if(admin.getLastName().equals(identifier)){
+					adminSearchResult.add(admin);
+					
+				}
+				else if(admin.getContact().equals(identifier)){
+					adminSearchResult.add(admin);
+					
+				}
+			}
+			return adminSearchResult;
+		}
 	}
 
 }

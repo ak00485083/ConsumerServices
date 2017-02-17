@@ -44,18 +44,18 @@ public class AdminController {
 	 * @throws JsonMappingException 
 	 * @throws JsonGenerationException 
 	 */
-	@RequestMapping(value="/admins/",method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/admins/",method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE )
 	public String createAdmin( @RequestBody Admin admin) throws JsonGenerationException, JsonMappingException, IOException{
 		
 		return adminService.createAdmin(admin);
 	}
 	
 	
-	@RequestMapping(value="/admins/",method=RequestMethod.GET)
-	public Admin getAdmins( @RequestBody Admin admin){
-		
-		return adminService.updateAdminDetails(admin);
-	}
+//	@RequestMapping(value="/admins/",method=RequestMethod.GET)
+//	public Admin getAdmins( @RequestBody Admin admin){
+//		
+//		return adminService.updateAdminDetails(admin);
+//	}
 	
 	
 	/**
@@ -63,7 +63,7 @@ public class AdminController {
 	 * @param identifier
 	 * @return
 	 */
-	@RequestMapping(value="/admins/{identifier}",method=RequestMethod.DELETE)
+	@RequestMapping(value="/admins/{identifier}",method=RequestMethod.DELETE, produces=MediaType.TEXT_PLAIN_VALUE)
 	public String deleteAdmin( @PathVariable("identifier") String identifier){
 		
 		return adminService.deleteAdminDetails(identifier);
@@ -74,10 +74,10 @@ public class AdminController {
 	 * @param identifier
 	 * @return
 	 */
-	@RequestMapping(value="/admins/{identifier}",method=RequestMethod.GET)
-	public List<Admin> findAdmin( @PathVariable("identifier") String identifier){
+	@RequestMapping(value="/admins/",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE )
+	public List<Admin> findAdmin(@RequestBody Admin admin){
 		
-		return adminService.findAdmin(identifier);
+		return adminService.search(admin.getUsername());
 	}
 	
 
