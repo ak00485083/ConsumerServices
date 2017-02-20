@@ -75,9 +75,9 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping(value="/admins/",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE )
-	public List<Admin> findAdmin(@RequestBody Admin admin){
+	public List<Admin> findAdmin(){
 		
-		return adminService.search(admin.getUsername());
+		return adminService.search();
 	}
 	
 

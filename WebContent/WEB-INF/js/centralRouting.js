@@ -40,7 +40,8 @@ consumerApp.controller('mainController', function($scope,$http,$rootScope){
 		});
 		
 	};
-	$scope.createAdmin=function(){
+	$scope.createAdmin=function(createForm){
+		$scope.admin=createForm;
 		$http({
 			method:'POST',
 			url:'admins/',
@@ -56,6 +57,7 @@ consumerApp.controller('mainController', function($scope,$http,$rootScope){
 		
 	};
 	$scope.deleteAdmin=function(){
+		
 		$http({
 			method:'DELETE',
 			url:'admins/',
@@ -67,12 +69,14 @@ consumerApp.controller('mainController', function($scope,$http,$rootScope){
 		});
 		
 	};
-	$scope.search=function(){
+	$scope.search=function(searchForm){
+		$scope.admin=searchForm;
 		$http({
 			method:'GET',
-			url:'admins/',
-			data : $scope.searchForm
+			url:'admins/'
+//			data : $scope.admin
 		}).then(function successCalback(response){
+			$scope.success=true;
 			$scope.adminList=response.data;
 		},function errorCallback(response){
 			console.log(response.statusText);

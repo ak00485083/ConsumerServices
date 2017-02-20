@@ -54,6 +54,12 @@ li:nth-child(3) {
 .active {
 	background-color: rgb(6, 179, 6);
 }
+.searchList{
+padding-top:5px;
+background-color: yellow;
+border: medium;
+border-style: solid;
+}
 </style>
 </head>
 <body>
@@ -94,7 +100,7 @@ li:nth-child(3) {
 			</div>
 			<div ng-show="tab === 3">
 				<div ng-hide="success" >
-					<form ng-submit="createAdmin()" name="createForm">
+					<form ng-submit="createAdmin(createForm)" name="createForm">
 						<h1>Create Admin Page new</h1>
 						<label>username: </label>
 						 <input type="text"ng-model="createForm.username"><br>
@@ -120,26 +126,30 @@ li:nth-child(3) {
 					</div>
 			</div>
 			<div ng-show="tab ===4">
-				<div>
-				<form ng-submit="search()" name="searchForm">
+				<form ng-submit="search(searchForm)" name="searchForm">
 					<h1>Admin Update Page</h1>
 					<p>{{ message }}</p>
-
-					<label>First Name: </label> <input type="text"
-						ng-model="searchForm.firstName"> <label>Last Name:
-					</label> <input type="text" ng-model="searchForm.lastName"><br>
-					<label>Location: </label> <input type="text"
-						ng-model="searchForm.location"><br> <label>Contact:
-					</label> <input type="text" ng-model="searchForm.contact"><br>
-					<label>House: </label> <input type="text"
-						ng-model="searchForm.address.house"><br> <input
-						type="submit" value="Find">
+						<label>First Name: </label> 
+						<input type="text" ng-model="searchForm.firstName"> 
+						<label>Last Name:</label> 
+						<input type="text" ng-model="searchForm.lastName"><br>
+						<label>Location: </label>
+						<input type="text" ng-model="searchForm.location"><br>
+						<label>Contact:</label> 
+						<input type="text" ng-model="searchForm.contact"><br>
+						<label>House: </label>
+						<input type="text" ng-model="searchForm.address.house"><br>
+						<input type="submit" value="Find">
 				</form>
+				<div>
 				</div>
-				<div ng-repeat="admin in adminList" ng-if="$index % 2 == 0"
-						class="row">
-						<div class="col-xs-6">First: {{results[$index].admin.firstName}}</div>
-						<br />
+				<div  ng-show = "success" ng-repeat="admin in adminList" class="row">
+				<table class=searchList>
+				<tr>
+					<td>{{admin.firstName}}</td>
+					<td>{{admin.lastName}}</td>
+				</tr>
+			</table> 
 					</div>
 			</div>
 		</ul>

@@ -58,29 +58,29 @@ public class AdminDao {
 
 
 
-	public List<Admin> search(String identifier) {
+	public List<Admin> search() {
 		List<Admin> adminSearchResult=new ArrayList<>();
-		if(identifier==null){
+//		if(identifier==null){
 			return adminCollection;
-		}else{
-			for (Admin admin : adminCollection) {
-				if(admin.getUsername().equals(identifier)){
-					adminSearchResult.add(admin);
-					
-				}else if(admin.getFirstName().equals(identifier)){
-					adminSearchResult.add(admin);
-					
-				}else if(admin.getLastName().equals(identifier)){
-					adminSearchResult.add(admin);
-					
-				}
-				else if(admin.getContact().equals(identifier)){
-					adminSearchResult.add(admin);
-					
-				}
-			}
-			return adminSearchResult;
-		}
+//		}else{
+//			for (Admin admin : adminCollection) {
+//				if(admin.getUsername().equals(identifier)){
+//					adminSearchResult.add(admin);
+//					
+//				}else if(admin.getFirstName().equals(identifier)){
+//					adminSearchResult.add(admin);
+//					
+//				}else if(admin.getLastName().equals(identifier)){
+//					adminSearchResult.add(admin);
+//					
+//				}
+//				else if(admin.getContact().equals(identifier)){
+//					adminSearchResult.add(admin);
+//					
+//				}
+//			}
+//			return adminSearchResult;
+//		}
 	}
 
 }
